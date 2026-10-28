@@ -32,10 +32,10 @@ except Exception as e:
 
 # 2. Test Apify
 print("\n--- Testing Apify ---")
-# Testing with tilde ~ format for Apify actor: apify~linkedin-jobs-scraper or apify~google-jobs-scraper
-apify_url = "https://api.apify.com/v2/acts/apify~google-jobs-scraper/run-sync-get-dataset-items"
+# Testing with tilde ~ format for Apify actor: apify~linkedin-jobs-scraper or johnvc~Google-Jobs-Scraper
+apify_url = "https://api.apify.com/v2/acts/johnvc~Google-Jobs-Scraper/run-sync-get-dataset-items"
 headers = {"Authorization": f"Bearer {apify_token}"}
-r_apify = requests.post(apify_url, json={"queries": "AI Engineer"}, headers=headers, timeout=25)
+r_apify = requests.post(apify_url, json={"query": "AI Engineer", "num_results": 10}, headers=headers, timeout=25)
 print(f"Apify HTTP Status: {r_apify.status_code}")
 try:
     apify_json = r_apify.json()
